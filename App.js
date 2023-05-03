@@ -38,7 +38,8 @@ export default function App() {
       <Text>{item.name}</Text>
       <Button
         title="Eliminar"
-        onPress={() => onHandleModal(item)} color={"blue"}
+        onPress={() => onHandleModal(item)}
+        color={"#9290DF"}
       />
     </View>
   );
@@ -71,14 +72,14 @@ export default function App() {
       <View>
         <Modal visible={modalVisible} animationType='fade' transparent={false}>
           <View style={styles.modalContainer}>
-            <Text>Modal</Text>
-            <View>
-              <Text>Borrar Elemento?</Text>
-              <Text>{itemSelected.name}</Text>
+            {/* <Text>Modal</Text> */}
+            <View style={styles.textModal}>
+              <Text style={styles.text}>Borrar Elemento?</Text>
+              <Text style={styles.text}>{itemSelected.name}</Text>
             <View>
               <Button 
                 title='Eliminar' 
-                color={"#B7C996"} 
+                color={"#77625C"} 
                 onPress={() => onHandleDelete(itemSelected)}
               />
             </View>
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#9C9CFA',
     alignItems: 'center',
+    padding: 20,
   },
   inputContainer: {
     flexDirection: "row",
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     height: 60,
     width: "100%",
-    backgroundColor: "#5B5F97",
+    backgroundColor: "#E1F2FE",
     margin: 10,
     marginBottom: 20,
     padding: 10,
@@ -127,7 +129,16 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  }
-
+    alignItems: "center",
+    backgroundColor: '#9C9CFA',
+  },
+  textModal: {
+    margin: 20,
+  },
+  text: {
+    padding:10,
+    textAlign: "center",
+    color: "#49392C",
+    fontSize: 16
+  },
 });
