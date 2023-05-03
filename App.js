@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Image, TextInput, Button, Text, FlatList } from 'react-native';
-import { Modal } from 'react-native';
+import { StyleSheet, View, Image, TextInput, Button, Text, FlatList, Modal } from 'react-native';
 
 export default function App() {
   const [ textItem, setTextItem ] = useState("");
@@ -14,7 +13,7 @@ export default function App() {
   };
 
   const addItem = () => {
-    console.log("aqui agregamos el item", textItem);
+    // console.log("aqui agregamos el item", textItem);
     setList(prevState => [
       ...prevState, 
       { name: textItem, id: Math.random().toString() },
@@ -28,10 +27,10 @@ export default function App() {
     setModalVisible(true);
   };
 
-  const onHandleDelete = item => {
-    console.log(item);
-    // setList(prevState => prevState.filter(element => element !== id));
-    // setModalVisible(false);
+  const onHandleDelete = id => {
+    console.log("delete item");
+    setList(prevState => prevState.filter(element => element !== id));
+    setModalVisible(false);
   };
 
   const renderItem = ({ item }) => (
@@ -70,7 +69,7 @@ export default function App() {
         />
       </View>
       <View>
-        <Modal>
+        <Modal visible={modalVisible} animationType='fade' transparent={false}>
           <View style={styles.modalContainer}>
             <Text>Modal</Text>
             <View>
